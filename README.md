@@ -1,296 +1,208 @@
-# OpenClaw Gateway Auto-Recovery System
+# OpenClaw Always On
 
-> **Making AI agents as reliable as they are brilliant.**
+**Keep OpenClaw Gateway running 24/7 on your Mac Mini without manual intervention.**
 
-## 🎯 Why This Exists
+## The Problem
 
-I installed OpenClaw — a brilliant AI agent that handles tasks autonomously, communicates via Telegram, automates workflows, and acts as an always-available assistant. It's transformative technology that gives ordinary people what CEOs, founders, and executives have always enjoyed: a dedicated secretary, personal assistant, and executor.
+You installed OpenClaw on a Mac Mini. It's brilliant — handles tasks autonomously, integrates with Telegram, acts as your AI assistant. But there's a critical issue:
 
-**But there was a problem.**
+**The gateway keeps going down.**
 
-Despite OpenClaw's intelligence and capabilities, it kept going down. No response. Silent. Dead.
+You message OpenClaw. No response. You check the Mac. Gateway crashed. Again. You have to manually restart it. This defeats the entire purpose of having an AI assistant.
 
-Every time it happened, I had to:
-- Notice it was down (sometimes hours later)
-- SSH into the machine
-- Manually restart the service
-- Wait and pray it wouldn't happen again
-- Lose time, momentum, and trust
+**This skill fixes that.**
 
-**This defeats the entire purpose.** An AI assistant that requires manual intervention isn't an assistant — it's another thing to babysit.
+## The Solution
 
-OpenClaw is already incredibly smart and powerful. The limitation isn't intelligence; it's **infrastructure stability**. The environment around it wasn't reliable enough to match its potential.
+Automatic recovery system that keeps OpenClaw running 24/7:
+- ✅ Auto-restart when gateway crashes (< 10 seconds)
+- ✅ Health monitoring every 60 seconds
+- ✅ Smart retry logic (3 attempts with backoff)
+- ✅ Prevents Mac from sleeping
+- ✅ Automatic log rotation
+- ✅ Resource monitoring (disk space, port conflicts)
 
-## 💡 The Solution
+**Result: 99%+ uptime, zero manual intervention.**
 
-This Claude Code skill transforms OpenClaw from a fragile demo into a **production-ready, bulletproof service** that runs 24/7 without human intervention.
+## Installation
 
-### What It Does
+### The Easy Way (Recommended)
 
-**Four Layers of Protection:**
+Just send this message to your OpenClaw:
 
-1. **Instant Crash Recovery** (< 10 seconds)
-   macOS LaunchAgent with intelligent KeepAlive restarts the process immediately on crashes
-
-2. **Health Monitoring** (60-second intervals)
-   Watchdog continuously checks HTTP health and auto-restarts on failure
-
-3. **Smart Recovery Logic**
-   - 3 retry attempts with progressive delays (5s → 10s → 15s)
-   - Exponential backoff on repeated failures (30s → 5min)
-   - Resource checks (disk space, port conflicts)
-   - Automatic log rotation (prevents disk full issues)
-
-4. **Sleep Prevention** (optional)
-   Keeps your Mac awake 24/7 for continuous operation
-
-**The result?** OpenClaw just works. Always.
-
-## 🌟 The Vision
-
-We're entering an era where **everyone can have their own AI executive team**. Not just the wealthy or the well-connected — anyone.
-
-All you need to provide:
-- ✅ **Goals** — what you want accomplished
-- ✅ **Power** — electricity to run the machine
-- ✅ **Compute** — a Mac Mini or similar hardware
-- ✅ **Stability** — this skill handles that
-
-The AI handles everything else: communication, execution, learning, adapting, remembering context, working while you sleep.
-
-But none of that matters if the system goes down at 3 AM and nobody notices until noon.
-
-**This skill makes AI agents as reliable as they are capable.**
-
-## 📊 Real Impact
-
-### Before This Skill
 ```
-Uptime: 85-90%
-Manual interventions: 2-3 times per week
-Response time when down: Hours
-Trust level: "It'll probably work..."
+Install this skill to keep you running 24/7:
+https://github.com/kenny-zheng-best/openclaw-always-on
+
+Run: /setup-openclaw-watchdog --prevent-sleep
 ```
 
-### After This Skill
-```
-Uptime: 99%+
-Manual interventions: ~0 (only for updates)
-Response time when down: < 60 seconds (automatic)
-Trust level: "It just works."
-```
+OpenClaw will read the repository, understand what to do, and install the skill itself.
 
-## 🚀 Quick Start
+### Manual Installation
 
-### Installation
-
-1. Copy this skill to Claude Code:
-   ```bash
-   mkdir -p ~/.claude/skills
-   cd ~/.claude/skills
-   git clone https://github.com/your-username/openclaw-watchdog-skill.git setup-openclaw-watchdog
-   ```
-
-2. Run the skill:
-   ```
-   /setup-openclaw-watchdog --prevent-sleep
-   ```
-
-That's it. OpenClaw will now run 24/7 without your intervention.
-
-### What Gets Installed
-
-- **Gateway LaunchAgent** — Auto-starts on boot, restarts on crashes
-- **Watchdog LaunchAgent** — Monitors health every 60 seconds
-- **Prevent-Sleep Service** — Keeps Mac awake (optional but recommended)
-- **Production-Ready Safeguards** — Log rotation, resource checks, smart retry logic
-
-## ✨ Features
-
-### v2.0 Production Enhancements
-
-- 🔄 **Automatic Log Rotation** — Compresses logs > 100MB, keeps last 5 archives
-- 🛡️ **Resource Monitoring** — Checks disk space (min 2GB) before restart attempts
-- ⚡ **Exponential Backoff** — Prevents rapid restart loops (30s-5min delay on failures)
-- 🔍 **Port Conflict Detection** — Detects if port 18789 is blocked by other processes
-- 🔁 **Smart Retry Logic** — 3 restart attempts with increasing wait times
-- 📊 **Failure Tracking** — Monitors consecutive failures for intelligent recovery
-- 🌐 **Network Dependency** — Waits for network availability before starting
-- ⚙️ **Throttle Protection** — 10-second minimum between restart attempts
-
-## 📖 Documentation
-
-- [CHANGELOG.md](./CHANGELOG.md) — Version history and migration guide
-- [SKILL.md](./SKILL.md) — Technical implementation details for Claude
-- [PREVENT-SLEEP.md](./PREVENT-SLEEP.md) — Deep dive on keeping Mac awake 24/7
-- [SHARING.md](./SHARING.md) — How to share this skill with others
-
-## 🔧 Usage Examples
-
-### Basic Setup (No Notifications)
-```
-/setup-openclaw-watchdog
-```
-
-### With Telegram Notifications
-```
-/setup-openclaw-watchdog --telegram-bot-token YOUR_BOT_TOKEN --telegram-chat-id YOUR_CHAT_ID
-```
-
-### Full Setup (Recommended for 24/7 Operation)
-```
-/setup-openclaw-watchdog --prevent-sleep --telegram-bot-token TOKEN --telegram-chat-id ID
-```
-
-### Custom Health Check Interval
-```
-/setup-openclaw-watchdog --check-interval 30
-```
-
-## 🛠️ Monitoring & Control
-
-### Check Status
 ```bash
-# View all OpenClaw services
+mkdir -p ~/.claude/skills
+cd ~/.claude/skills
+git clone https://github.com/kenny-zheng-best/openclaw-always-on.git setup-openclaw-watchdog
+```
+
+Then in Claude Code:
+```
+/setup-openclaw-watchdog --prevent-sleep
+```
+
+## What Gets Installed
+
+Three system services that work together:
+
+1. **Gateway LaunchAgent** — Restarts OpenClaw instantly if it crashes
+2. **Watchdog LaunchAgent** — Checks health every 60s, auto-restarts if down
+3. **Prevent-Sleep Service** — Keeps your Mac awake 24/7
+
+All three start automatically on boot. No manual intervention needed.
+
+## Quick Status Check
+
+```bash
+# Check all services are running
 launchctl list | grep openclaw
 
-# Check gateway status
+# Test gateway
 curl http://127.0.0.1:18789
 
 # View logs
 tail -f ~/.openclaw/logs/gateway.log
-tail -f ~/.openclaw/watchdog/watchdog.log
 ```
 
-### Manual Control
-```bash
-# Restart gateway
-launchctl kickstart -k gui/$(id -u)/ai.openclaw.gateway
+## Features
 
-# Stop all services
-launchctl bootout gui/$(id -u)/ai.openclaw.gateway
-launchctl bootout gui/$(id -u)/ai.openclaw.watchdog
-launchctl bootout gui/$(id -u)/ai.openclaw.prevent-sleep
+### v2.0 Production Ready
+- 🔄 **Automatic log rotation** — Compresses logs > 100MB
+- 🛡️ **Resource safeguards** — Checks disk space before restart
+- ⚡ **Exponential backoff** — Prevents rapid restart loops
+- 🔍 **Port conflict detection** — Detects when port 18789 is blocked
+- 🔁 **Smart retry logic** — 3 attempts with increasing delays (5s → 10s → 15s)
+- 🌐 **Network dependency** — Waits for network before starting
+- 📊 **Failure tracking** — Monitors consecutive failures
+
+### Optional: Telegram Notifications
+
+Get notified when OpenClaw goes down or recovers:
+
+```
+/setup-openclaw-watchdog --prevent-sleep --telegram-bot-token YOUR_TOKEN --telegram-chat-id YOUR_ID
 ```
 
-## 🎯 Reliability Metrics
+Get credentials:
+- Bot token: [@BotFather](https://t.me/BotFather)
+- Chat ID: [@userinfobot](https://t.me/userinfobot)
 
-**Production Readiness Score: 8.5/10**
+## Troubleshooting
 
-| Metric | Score | Notes |
-|--------|-------|-------|
-| **Uptime** | 99%+ | With proper configuration |
-| **MTTR** | < 60s | Mean time to recovery |
-| **Auto-healing** | ✅ | No manual intervention needed |
-| **Log Management** | ✅ | Automatic rotation & compression |
-| **Resource Protection** | ✅ | Disk/port monitoring |
-| **Sleep Prevention** | ✅ | 24/7 operation support |
-
-**Ready for:**
-- ✅ Personal AI assistants
-- ✅ Team automation tools
-- ✅ Small-scale production services
-- ✅ Development servers
-- ✅ 24/7 automation tasks
-
-**Consider additional monitoring for:**
-- ⚠️ Business-critical services
-- ⚠️ High-traffic applications
-- ⚠️ Compliance requirements
-
-## 🖥️ Requirements
-
-- **macOS** (LaunchAgent is macOS-specific)
-- **Node.js** installed
-- **OpenClaw** installed
-- **Claude Code** (for running the skill)
-
-## 📱 Optional: Telegram Notifications
-
-To receive alerts when OpenClaw goes down or recovers:
-
-1. Create a Telegram bot: Message [@BotFather](https://t.me/BotFather)
-2. Get your chat ID: Message [@userinfobot](https://t.me/userinfobot)
-3. Run with notifications:
-   ```
-   /setup-openclaw-watchdog --telegram-bot-token YOUR_TOKEN --telegram-chat-id YOUR_ID
-   ```
-
-## 🔍 Troubleshooting
-
-### Gateway Won't Start
+### Gateway won't start
 ```bash
-# Check error logs
+# Check what's wrong
 cat ~/.openclaw/logs/gateway.err.log
 
-# Verify OpenClaw is installed
-which openclaw
-
-# Check if port is in use
+# Check if port is blocked
 lsof -i :18789
 
-# Try starting manually
-~/.openclaw/bin/openclaw gateway
+# Restart manually
+launchctl kickstart -k gui/$(id -u)/ai.openclaw.gateway
 ```
 
-### Watchdog Not Working
-```bash
-# Test watchdog script manually
-bash ~/.openclaw/watchdog/gateway-watchdog.sh
-
-# Check watchdog logs
-cat ~/.openclaw/watchdog/watchdog.log
-
-# Verify LaunchAgent is loaded
-launchctl list | grep watchdog
-```
-
-### Mac Still Sleeps
+### Mac still sleeps
 ```bash
 # Check caffeinate is running
 ps aux | grep caffeinate
-
-# Check power assertions
-pmset -g assertions | grep -i prevent
 
 # Restart sleep prevention
 launchctl kickstart -k gui/$(id -u)/ai.openclaw.prevent-sleep
 ```
 
-## 🤝 Contributing
+### Watchdog not working
+```bash
+# Test watchdog manually
+bash ~/.openclaw/watchdog/gateway-watchdog.sh
 
-Improvements welcome! Consider:
-- Support for Linux (systemd units)
-- Enhanced notification options (email, Slack, etc.)
-- Configurable retry logic
-- Dashboard/status page
-- Docker deployment option
+# Check logs
+tail ~/.openclaw/watchdog/watchdog.log
+```
 
-## 📄 License
+## Requirements
 
-MIT License — Feel free to use, modify, and share!
+- macOS (LaunchAgent is macOS-specific)
+- Node.js installed
+- OpenClaw installed
+- Claude Code (to run the skill)
 
-## 🙏 Credits
+## Architecture
 
-Created out of necessity. OpenClaw is brilliant but needs a stable foundation.
+```
+┌─────────────────────────────────────────┐
+│    macOS LaunchAgent (System Level)    │
+└─────────────────┬───────────────────────┘
+                  │
+        ┌─────────┼─────────┐
+        │         │         │
+        ▼         ▼         ▼
+    Gateway   Watchdog   Prevent
+   (18789)   (Monitor)   Sleep
+        │         │         │
+        └─────────┼─────────┘
+                  │
+        ┌─────────▼──────────┐
+        │  OpenClaw Running  │
+        │    Always On 🦞    │
+        └────────────────────┘
+```
 
-This skill bridges the gap between AI capability and infrastructure reliability.
+**Recovery Flow:**
+1. Watchdog checks HTTP health every 60s
+2. If down → Pre-flight checks (disk space, port conflict)
+3. Apply exponential backoff if recent failures
+4. Restart via launchctl kickstart
+5. Retry up to 3 times with increasing delays
+6. Send notifications (macOS + Telegram)
 
-**Because an AI assistant that's down is just an expensive paperweight.**
+## Documentation
 
----
+- [CHANGELOG.md](./CHANGELOG.md) — Version history
+- [SKILL.md](./SKILL.md) — Technical details for Claude
+- [PREVENT-SLEEP.md](./PREVENT-SLEEP.md) — Sleep prevention guide
 
-## 💬 Philosophy
+## Why This Exists
 
-The future of work isn't about replacing humans — it's about **amplifying human capability**.
+OpenClaw is incredibly capable. But capability without reliability is just frustration.
 
-AI agents like OpenClaw are tools that let anyone operate at the scale of a CEO with a full executive team. But tools are only valuable if they're **reliable**.
-
-We've solved intelligence. Now we're solving stability.
+This skill gives ordinary people what CEOs have: an AI assistant that actually works when you need it. You provide the goals, power, and compute. This skill provides the stability.
 
 **Your AI should work harder than you do. This skill makes sure it can.**
 
+## Stats
+
+**Before this skill:**
+- Uptime: 85-90%
+- Manual restarts: 2-3 times per week
+- Recovery time: Hours (when you notice)
+
+**After this skill:**
+- Uptime: 99%+
+- Manual restarts: ~0
+- Recovery time: < 60 seconds (automatic)
+
+## Contributing
+
+Improvements welcome:
+- Linux support (systemd units)
+- More notification options (email, Slack)
+- Dashboard/status page
+
+## License
+
+MIT — Use freely, modify, share
+
 ---
 
-**Questions? Issues? Improvements?**
-Open an issue or contribute improvements. Let's make AI agents reliable for everyone.
+**An AI that's down is just an expensive paperweight. Keep it running.**
