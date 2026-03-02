@@ -32,7 +32,7 @@ Just send this message to your OpenClaw:
 
 ```
 Install this skill to keep you running 24/7:
-https://github.com/kenny-zheng-best/openclaw-never-die
+https://github.com/kennyzheng-builds/openclaw-never-die
 
 Run: /openclaw-never-die --prevent-sleep
 ```
@@ -44,7 +44,7 @@ OpenClaw will read the repository, understand what to do, and install the skill 
 ```bash
 mkdir -p ~/.claude/skills
 cd ~/.claude/skills
-git clone https://github.com/kenny-zheng-best/openclaw-never-die.git openclaw-never-die
+git clone https://github.com/kennyzheng-builds/openclaw-never-die.git openclaw-never-die
 ```
 
 Then in Claude Code:
