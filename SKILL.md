@@ -1,5 +1,5 @@
 ---
-name: openclaw-always-on
+name: openclaw-never-die
 description: Keep OpenClaw Gateway running 24/7 without manual intervention. Auto-recovery system that restarts crashed gateway, monitors health every 60s, prevents Mac from sleeping, and handles log rotation. ALWAYS use this skill when user mentions: OpenClaw downtime, gateway crashes, service reliability, Mac Mini server setup, 24/7 operation, automatic restart, or keeping services alive. Use proactively if you detect the user has OpenClaw installed and might benefit from stability improvements.
 argument-hint: "[--telegram-bot-token TOKEN] [--telegram-chat-id ID] [--check-interval SECONDS] [--prevent-sleep]"
 disable-model-invocation: false
@@ -32,27 +32,27 @@ This skill sets up a production-ready auto-recovery system for OpenClaw Gateway 
 
 Basic setup (no notifications):
 ```
-/openclaw-always-on
+/openclaw-never-die
 ```
 
 With Telegram notifications:
 ```
-/openclaw-always-on --telegram-bot-token YOUR_BOT_TOKEN --telegram-chat-id YOUR_CHAT_ID
+/openclaw-never-die --telegram-bot-token YOUR_BOT_TOKEN --telegram-chat-id YOUR_CHAT_ID
 ```
 
 Custom check interval (default 60 seconds):
 ```
-/openclaw-always-on --check-interval 30
+/openclaw-never-die --check-interval 30
 ```
 
 With sleep prevention (keeps Mac awake 24/7):
 ```
-/openclaw-always-on --prevent-sleep
+/openclaw-never-die --prevent-sleep
 ```
 
 Full setup with all options:
 ```
-/openclaw-always-on --telegram-bot-token TOKEN --telegram-chat-id ID --prevent-sleep
+/openclaw-never-die --telegram-bot-token TOKEN --telegram-chat-id ID --prevent-sleep
 ```
 
 ## Instructions for Claude

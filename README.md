@@ -1,4 +1,4 @@
-# OpenClaw Always On
+# OpenClaw Never Die
 
 **Keep OpenClaw Gateway running 24/7 on your Mac Mini without manual intervention.**
 
@@ -32,9 +32,9 @@ Just send this message to your OpenClaw:
 
 ```
 Install this skill to keep you running 24/7:
-https://github.com/kenny-zheng-best/openclaw-always-on
+https://github.com/kenny-zheng-best/openclaw-never-die
 
-Run: /openclaw-always-on --prevent-sleep
+Run: /openclaw-never-die --prevent-sleep
 ```
 
 OpenClaw will read the repository, understand what to do, and install the skill itself.
@@ -44,12 +44,12 @@ OpenClaw will read the repository, understand what to do, and install the skill 
 ```bash
 mkdir -p ~/.claude/skills
 cd ~/.claude/skills
-git clone https://github.com/kenny-zheng-best/openclaw-always-on.git openclaw-always-on
+git clone https://github.com/kenny-zheng-best/openclaw-never-die.git openclaw-never-die
 ```
 
 Then in Claude Code:
 ```
-/openclaw-always-on --prevent-sleep
+/openclaw-never-die --prevent-sleep
 ```
 
 ## What Gets Installed
@@ -91,7 +91,7 @@ tail -f ~/.openclaw/logs/gateway.log
 Get notified when OpenClaw goes down or recovers:
 
 ```
-/openclaw-always-on --prevent-sleep --telegram-bot-token YOUR_TOKEN --telegram-chat-id YOUR_ID
+/openclaw-never-die --prevent-sleep --telegram-bot-token YOUR_TOKEN --telegram-chat-id YOUR_ID
 ```
 
 Get credentials:
@@ -154,7 +154,7 @@ tail ~/.openclaw/watchdog/watchdog.log
                   │
         ┌─────────▼──────────┐
         │  OpenClaw Running  │
-        │    Always On 🦞    │
+        │    Never Die 💀⚡   │
         └────────────────────┘
 ```
 
